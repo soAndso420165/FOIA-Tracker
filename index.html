@@ -28,271 +28,70 @@
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'IBM Plex Sans', sans-serif;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 14px;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 14px; min-height: 100vh; overflow-x: hidden; }
 
   /* HEADER */
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 56px;
-  }
-
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .logo {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .logo span {
-    color: var(--muted);
-    font-weight: 400;
-  }
-
-  .header-stats {
-    display: flex;
-    gap: 20px;
-  }
-
-  .stat-pill {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .stat-pill strong {
-    color: var(--text);
-    font-size: 13px;
-  }
+  .header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .logo { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+  .logo span { color: var(--muted); font-weight: 400; }
+  .header-stats { display: flex; gap: 20px; }
+  .stat-pill { font-family: var(--mono); font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .stat-pill strong { color: var(--text); font-size: 13px; }
 
   /* TABS */
-  .tabs {
-    display: flex;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
-    padding: 0 20px;
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
+  .tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--bg); padding: 0 20px; gap: 4px; overflow-x: auto; scrollbar-width: none; }
   .tabs::-webkit-scrollbar { display: none; }
-
-  .tab {
-    padding: 10px 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: none;
-    background: none;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    transition: all 0.15s;
-    margin-bottom: -1px;
-  }
-
+  .tab { padding: 10px 16px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.15s; margin-bottom: -1px; }
   .tab:hover { color: var(--text); }
   .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
   /* MAIN */
   .main { padding: 20px; max-width: 1100px; margin: 0 auto; }
-
-  /* VIEW PANEL */
   .view { display: none; }
   .view.active { display: block; }
 
-  /* FILTERS BAR */
-  .filters {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .search-box {
-    flex: 1;
-    min-width: 200px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 8px 12px;
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 12px;
-    outline: none;
-    transition: border-color 0.15s;
-  }
-
+  /* FILTERS */
+  .filters { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+  .search-box { flex: 1; min-width: 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 8px 12px; color: var(--text); font-family: var(--mono); font-size: 12px; outline: none; transition: border-color 0.15s; }
   .search-box:focus { border-color: var(--accent); }
   .search-box::placeholder { color: var(--muted); }
+  .filter-select { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 8px 12px; color: var(--text); font-family: var(--mono); font-size: 12px; outline: none; cursor: pointer; }
 
-  .filter-select {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 8px 12px;
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 12px;
-    outline: none;
-    cursor: pointer;
-  }
-
-  /* BTN */
-  .btn {
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    border: none;
-    transition: all 0.15s;
-    white-space: nowrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #000;
-  }
+  /* BUTTONS */
+  .btn { padding: 8px 16px; border-radius: 4px; font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.5px; cursor: pointer; border: none; transition: all 0.15s; white-space: nowrap; }
+  .btn-primary { background: var(--accent); color: #000; }
   .btn-primary:hover { background: var(--accent2); }
-
-  .btn-ghost {
-    background: transparent;
-    border: 1px solid var(--border2);
-    color: var(--muted);
-  }
+  .btn-ghost { background: transparent; border: 1px solid var(--border2); color: var(--muted); }
   .btn-ghost:hover { border-color: var(--text); color: var(--text); }
-
-  .btn-danger {
-    background: transparent;
-    border: 1px solid var(--red);
-    color: var(--red);
-  }
+  .btn-danger { background: transparent; border: 1px solid var(--red); color: var(--red); }
   .btn-danger:hover { background: var(--red); color: #fff; }
-
   .btn-sm { padding: 5px 10px; font-size: 11px; }
+  .btn-xs { padding: 3px 8px; font-size: 10px; }
 
   /* CASE CARDS */
-  .cases-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  .cases-grid { display: flex; flex-direction: column; gap: 10px; }
+  .case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; cursor: pointer; transition: all 0.15s; }
+  .case-card:hover { border-color: var(--border2); }
+  .case-card-header { padding: 14px 16px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; border-left: 3px solid var(--case-color, var(--muted)); }
+  .case-id { font-family: var(--mono); font-size: 11px; color: var(--accent); font-weight: 600; letter-spacing: 1px; }
+  .case-title { font-weight: 500; font-size: 14px; color: var(--text); margin-top: 2px; }
+  .case-sub { font-size: 12px; color: var(--muted); margin-top: 2px; font-family: var(--mono); }
+  .case-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
 
-  .case-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 14px 16px;
-    cursor: pointer;
-    transition: all 0.15s;
-    position: relative;
-    overflow: hidden;
-  }
+  /* REQUEST MINI-CARDS inside case */
+  .requests-strip { border-top: 1px solid var(--border); background: var(--bg); padding: 8px 16px; display: flex; flex-direction: column; gap: 6px; }
+  .req-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; border-left: 3px solid var(--req-color, var(--muted)); }
+  .req-row:hover { border-color: var(--border2); }
+  .req-label { font-family: var(--mono); font-size: 11px; color: var(--accent); font-weight: 600; }
+  .req-agency { font-size: 12px; color: var(--text); }
+  .req-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .req-due { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .req-due.overdue { color: var(--red); font-weight: 700; }
+  .req-due.soon { color: var(--orange); }
 
-  .case-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--status-color, var(--muted));
-  }
-
-  .case-card:hover {
-    border-color: var(--border2);
-    background: var(--surface2);
-  }
-
-  .case-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .case-main {
-    display: grid;
-    grid-template-columns: 120px 1fr auto;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .case-id {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-
-  .case-title {
-    font-weight: 500;
-    font-size: 14px;
-    color: var(--text);
-  }
-
-  .case-sub {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 2px;
-    font-family: var(--mono);
-  }
-
-  .case-meta {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 8px;
-  }
-
-  .tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 2px;
-  }
-
+  /* TAGS */
+  .tag { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
   .tag-status-pending    { background: rgba(230,126,34,0.15); color: var(--orange); }
   .tag-status-submitted  { background: rgba(41,128,185,0.15); color: var(--blue); }
   .tag-status-received   { background: rgba(39,174,96,0.15);  color: var(--green); }
@@ -300,362 +99,99 @@
   .tag-status-appealing  { background: rgba(142,68,173,0.15); color: var(--purple); }
   .tag-status-closed     { background: rgba(100,100,100,0.15); color: var(--muted); }
   .tag-status-delayed    { background: rgba(212,168,67,0.15); color: var(--accent); }
-
-  .tag-state {
-    background: var(--surface2);
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
-
-  .case-date {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-
-  .overdue { color: var(--red) !important; }
+  .tag-state { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
 
   /* MODAL */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    z-index: 200;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 40px 20px;
-    overflow-y: auto;
-  }
-
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 200; align-items: flex-start; justify-content: center; padding: 40px 20px; overflow-y: auto; }
   .modal-overlay.open { display: flex; }
-
-  .modal {
-    background: var(--surface);
-    border: 1px solid var(--border2);
-    border-radius: 8px;
-    width: 100%;
-    max-width: 700px;
-    animation: slideIn 0.2s ease;
-    flex-shrink: 0;
-  }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .modal-header {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .modal-title {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .close-btn {
-    background: none;
-    border: none;
-    color: var(--muted);
-    cursor: pointer;
-    font-size: 20px;
-    line-height: 1;
-    transition: color 0.15s;
-    padding: 2px 6px;
-  }
-
+  .modal { background: var(--surface); border: 1px solid var(--border2); border-radius: 8px; width: 100%; max-width: 700px; animation: slideIn 0.2s ease; flex-shrink: 0; }
+  @keyframes slideIn { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+  .modal-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .modal-title { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+  .close-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 20px; line-height: 1; transition: color 0.15s; padding: 2px 6px; }
   .close-btn:hover { color: var(--text); }
-
   .modal-body { padding: 24px; }
+  .modal-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
+  /* FORMS */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
   .form-group.full { grid-column: 1 / -1; }
-
-  label {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  input, select, textarea {
-    background: var(--bg);
-    border: 1px solid var(--border2);
-    border-radius: 4px;
-    padding: 9px 12px;
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 13px;
-    outline: none;
-    transition: border-color 0.15s;
-    width: 100%;
-  }
-
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--accent);
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 80px;
-    font-size: 13px;
-  }
-
+  label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+  input, select, textarea { background: var(--bg); border: 1px solid var(--border2); border-radius: 4px; padding: 9px 12px; color: var(--text); font-family: var(--sans); font-size: 13px; outline: none; transition: border-color 0.15s; width: 100%; }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 72px; }
   select option { background: var(--surface); }
 
-  .modal-footer {
-    padding: 16px 24px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-  }
+  /* SECTION DIVIDER in modal */
+  .form-section-title { grid-column: 1/-1; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-top: 8px; }
 
-  /* DETAIL VIEW */
-  .detail-section {
-    margin-bottom: 24px;
-  }
+  /* REQUESTS IN CASE MODAL */
+  .requests-editor { grid-column: 1/-1; display: flex; flex-direction: column; gap: 10px; }
+  .req-editor-card { background: var(--bg); border: 1px solid var(--border2); border-radius: 6px; padding: 14px; position: relative; }
+  .req-editor-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .req-editor-label { font-family: var(--mono); font-size: 11px; color: var(--accent); font-weight: 600; letter-spacing: 1px; }
+  .req-editor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .req-editor-grid .full { grid-column: 1/-1; }
+  .add-req-btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; background: transparent; border: 1px dashed var(--border2); border-radius: 6px; color: var(--muted); font-family: var(--mono); font-size: 11px; cursor: pointer; width: 100%; transition: all 0.15s; }
+  .add-req-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  .detail-section-title {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .detail-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
+  /* DETAIL */
+  .detail-section { margin-bottom: 24px; }
+  .detail-section-title { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .detail-item { display: flex; flex-direction: column; gap: 3px; }
+  .detail-label { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .detail-value { font-size: 13px; color: var(--text); }
 
-  .detail-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+  /* REQUEST DETAIL CARDS in detail view */
+  .req-detail-card { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 14px; margin-bottom: 10px; border-left: 3px solid var(--req-color, var(--muted)); }
+  .req-detail-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+  .req-detail-title { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 600; }
 
-  .detail-value {
-    font-size: 13px;
-    color: var(--text);
-  }
-
-  /* NOTES / TIMELINE */
+  /* TIMELINE */
   .notes-list { display: flex; flex-direction: column; gap: 8px; }
-
-  .note-item {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 10px 12px;
-  }
-
-  .note-ts {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-
+  .note-item { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 10px 12px; }
+  .note-ts { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-bottom: 4px; }
   .note-text { font-size: 13px; line-height: 1.5; }
-
-  .note-input-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-  }
-
+  .note-input-row { display: flex; gap: 8px; margin-top: 10px; }
   .note-input-row input { flex: 1; }
 
   /* DASHBOARD */
-  .dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .kpi-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 16px;
-    text-align: center;
-  }
-
-  .kpi-value {
-    font-family: var(--mono);
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  .kpi-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-
-  .dash-section-title {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .recent-list { display: flex; flex-direction: column; gap: 6px; }
-
-  .recent-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    transition: border-color 0.15s;
-  }
-
+  .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .kpi-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 16px; text-align: center; }
+  .kpi-value { font-family: var(--mono); font-size: 32px; font-weight: 600; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+  .kpi-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+  .dash-section-title { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .recent-item { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: border-color 0.15s; margin-bottom: 6px; }
   .recent-item:hover { border-color: var(--border2); }
-
-  .deadline-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    margin-bottom: 6px;
-    cursor: pointer;
-    transition: border-color 0.15s;
-  }
-
+  .deadline-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 6px; cursor: pointer; transition: border-color 0.15s; }
   .deadline-item:hover { border-color: var(--border2); }
 
-  .empty-state {
-    text-align: center;
-    padding: 48px 20px;
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-
+  /* MISC */
+  .empty-state { text-align: center; padding: 48px 20px; color: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: 1px; }
   .empty-icon { font-size: 36px; margin-bottom: 12px; }
-
-  /* STATUS DOT */
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 600px) {
-    .form-grid { grid-template-columns: 1fr; }
-    .detail-grid { grid-template-columns: 1fr; }
-    .case-main { grid-template-columns: 1fr; }
-    .header-stats { display: none; }
-    .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  /* TOAST */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: var(--surface2);
-    border: 1px solid var(--border2);
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text);
-    z-index: 1000;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.2s;
-    pointer-events: none;
-    max-width: 280px;
-  }
-
+  .no-results { text-align: center; padding: 32px; color: var(--muted); font-family: var(--mono); font-size: 12px; }
+  .overdue { color: var(--red) !important; }
+  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 6px; padding: 12px 16px; font-family: var(--mono); font-size: 12px; color: var(--text); z-index: 1000; opacity: 0; transform: translateY(10px); transition: all 0.2s; pointer-events: none; max-width: 280px; }
   .toast.show { opacity: 1; transform: translateY(0); }
 
-  .no-results {
-    text-align: center;
-    padding: 32px;
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-
-  .badge {
-    background: var(--accent);
-    color: #000;
-    border-radius: 10px;
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 700;
-    padding: 1px 7px;
-    margin-left: 6px;
-    display: inline-block;
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .req-editor-grid { grid-template-columns: 1fr; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .header-stats { display: none; }
+    .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-left">
-    <div class="logo">FAF<span>/</span>FOIA</div>
-  </div>
+  <div class="logo">FAF<span>/</span>FOIA</div>
   <div class="header-stats">
-    <div class="stat-pill">TOTAL <strong id="hdr-total">0</strong></div>
-    <div class="stat-pill">PENDING <strong id="hdr-pending">0</strong></div>
+    <div class="stat-pill">CASES <strong id="hdr-cases">0</strong></div>
+    <div class="stat-pill">REQUESTS <strong id="hdr-reqs">0</strong></div>
     <div class="stat-pill">RECEIVED <strong id="hdr-received">0</strong></div>
   </div>
 </div>
@@ -671,10 +207,10 @@
   <!-- DASHBOARD -->
   <div id="view-dashboard" class="view active">
     <div class="dashboard-grid" id="dash-kpis"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;flex-wrap:wrap;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
       <div>
-        <div class="dash-section-title">Recent Activity</div>
-        <div class="recent-list" id="dash-recent"></div>
+        <div class="dash-section-title">Recent Cases</div>
+        <div id="dash-recent"></div>
       </div>
       <div>
         <div class="dash-section-title">⚠ Upcoming Deadlines</div>
@@ -683,10 +219,10 @@
     </div>
   </div>
 
-  <!-- ALL CASES -->
+  <!-- CASES -->
   <div id="view-cases" class="view">
     <div class="filters">
-      <input class="search-box" id="search-input" placeholder="Search by case name, subject, agency..." />
+      <input class="search-box" id="search-input" placeholder="Search cases, agencies, subjects..." />
       <select class="filter-select" id="filter-status">
         <option value="">All Statuses</option>
         <option value="pending">Pending</option>
@@ -697,9 +233,7 @@
         <option value="delayed">Delayed</option>
         <option value="closed">Closed</option>
       </select>
-      <select class="filter-select" id="filter-state">
-        <option value="">All States</option>
-      </select>
+      <select class="filter-select" id="filter-state"><option value="">All States</option></select>
       <button class="btn btn-primary" id="add-case-btn">+ New Case</button>
     </div>
     <div class="cases-grid" id="cases-list"></div>
@@ -707,15 +241,13 @@
 
   <!-- DEADLINES -->
   <div id="view-deadlines" class="view">
-    <div style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
-      <div class="dash-section-title" style="margin:0;border:0;padding:0;">Response Deadlines Tracker</div>
-    </div>
+    <div class="dash-section-title" style="margin-bottom:16px">All Request Deadlines</div>
     <div id="deadlines-list"></div>
   </div>
 
 </div>
 
-<!-- ADD/EDIT MODAL -->
+<!-- CASE MODAL (add/edit) -->
 <div class="modal-overlay" id="case-modal">
   <div class="modal">
     <div class="modal-header">
@@ -724,53 +256,11 @@
     </div>
     <div class="modal-body">
       <div class="form-grid">
-        <div class="form-group">
-          <label>Case Name / Subject *</label>
-          <input id="f-name" type="text" placeholder="e.g. Kara Ballard Shooting" />
-        </div>
-        <div class="form-group">
-          <label>Agency / Department *</label>
-          <input id="f-agency" type="text" placeholder="e.g. Bixby Police Dept" />
-        </div>
-        <div class="form-group">
-          <label>State</label>
-          <input id="f-state" type="text" placeholder="e.g. OK" maxlength="2" style="text-transform:uppercase" />
-        </div>
-        <div class="form-group">
-          <label>Status</label>
-          <select id="f-status">
-            <option value="pending">Pending — Not sent yet</option>
-            <option value="submitted">Submitted — Sent, awaiting ack</option>
-            <option value="received">Received — Got footage/docs</option>
-            <option value="denied">Denied</option>
-            <option value="appealing">Appealing</option>
-            <option value="delayed">Delayed — Extension granted</option>
-            <option value="closed">Closed</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Date Submitted</label>
-          <input id="f-submitted" type="date" />
-        </div>
-        <div class="form-group">
-          <label>Response Due Date</label>
-          <input id="f-due" type="date" />
-        </div>
-        <div class="form-group">
-          <label>Portal / Contact URL</label>
-          <input id="f-portal" type="url" placeholder="https://..." />
-        </div>
-        <div class="form-group">
-          <label>Reference / Tracking #</label>
-          <input id="f-refnum" type="text" placeholder="Agency's request ID" />
-        </div>
+        <!-- CASE INFO -->
+        <div class="form-section-title">Case Info</div>
         <div class="form-group full">
-          <label>What Was Requested</label>
-          <textarea id="f-request" placeholder="Describe exactly what footage/docs you requested..."></textarea>
-        </div>
-        <div class="form-group full">
-          <label>Case Summary / Notes</label>
-          <textarea id="f-notes" placeholder="Brief overview of the case, incident date, officers involved, etc..."></textarea>
+          <label>Case / Incident Name *</label>
+          <input id="f-name" type="text" placeholder="e.g. Kara Ballard Shooting — Bixby OK" />
         </div>
         <div class="form-group">
           <label>Content Potential</label>
@@ -782,18 +272,29 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Video Ready to Edit?</label>
+          <label>Overall Status</label>
           <select id="f-ready">
-            <option value="no">No</option>
-            <option value="yes">Yes — Footage in hand</option>
-            <option value="partial">Partial — Some docs received</option>
+            <option value="no">❌ No footage yet</option>
+            <option value="partial">⚡ Partial — some docs in</option>
+            <option value="yes">✅ Ready to edit</option>
           </select>
+        </div>
+        <div class="form-group full">
+          <label>Case Summary / Notes</label>
+          <textarea id="f-notes" placeholder="Overview of the incident, key details, officers involved, incident date..."></textarea>
+        </div>
+
+        <!-- REQUESTS -->
+        <div class="form-section-title">FOIA Requests</div>
+        <div class="requests-editor" id="requests-editor"></div>
+        <div class="form-group full" style="margin-top:0">
+          <button class="add-req-btn" id="add-req-btn" type="button">+ Add Another Request</button>
         </div>
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-danger btn-sm" id="delete-case-btn" style="display:none;">Delete Case</button>
-      <div style="display:flex;gap:10px;margin-left:auto;">
+      <button class="btn btn-danger btn-sm" id="delete-case-btn" style="display:none">Delete Case</button>
+      <div style="display:flex;gap:10px;margin-left:auto">
         <button class="btn btn-ghost" id="modal-cancel">Cancel</button>
         <button class="btn btn-primary" id="modal-save">Save Case</button>
       </div>
@@ -803,11 +304,11 @@
 
 <!-- DETAIL MODAL -->
 <div class="modal-overlay" id="detail-modal">
-  <div class="modal" style="max-width:760px;">
+  <div class="modal" style="max-width:780px">
     <div class="modal-header">
       <div>
         <div class="modal-title" id="detail-id"></div>
-        <div style="font-size:16px;font-weight:500;color:var(--text);margin-top:4px;" id="detail-name"></div>
+        <div style="font-size:16px;font-weight:500;color:var(--text);margin-top:4px" id="detail-name"></div>
       </div>
       <button class="close-btn" id="detail-close">✕</button>
     </div>
@@ -818,47 +319,60 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ── DATA ───────────────────────────────────────────────
-const STORAGE_KEY = 'faf_foia_cases';
+const STORAGE_KEY = 'faf_foia_v2';
 let cases = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+// migrate old v1 data if present
+(function migrate() {
+  const old = localStorage.getItem('faf_foia_cases');
+  if (old && !cases.length) {
+    try {
+      const oldCases = JSON.parse(old);
+      cases = oldCases.map(c => ({
+        ...c,
+        requests: [{
+          rid: 'R1',
+          agency: c.agency || '',
+          state: c.state || '',
+          status: c.status || 'pending',
+          submittedDate: c.submittedDate || '',
+          dueDate: c.dueDate || '',
+          portal: c.portal || '',
+          refnum: c.refnum || '',
+          request: c.request || '',
+        }],
+        timeline: c.timeline || [],
+      }));
+      save();
+    } catch(e) {}
+  }
+})();
+
 let editingId = null;
+let draftRequests = [];
 
-function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(cases));
-}
+function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(cases)); }
 
-function genId() {
+function genCaseId() {
   const num = String(cases.length + 1).padStart(4, '0');
   return `FAF-${num}`;
 }
 
-function today() {
-  return new Date().toISOString().split('T')[0];
+function today() { return new Date().toISOString().split('T')[0]; }
+function fmtDate(d) { if (!d) return '—'; const [y,m,day]=d.split('-'); return `${m}/${day}/${y}`; }
+function daysUntil(d) { if (!d) return null; return Math.ceil((new Date(d) - new Date(today())) / 86400000); }
+
+function statusColor(s) {
+  return {pending:'var(--orange)',submitted:'var(--blue)',received:'var(--green)',denied:'var(--red)',appealing:'var(--purple)',delayed:'var(--accent)',closed:'var(--muted)'}[s] || 'var(--muted)';
 }
 
-function fmtDate(d) {
-  if (!d) return '—';
-  const [y, m, day] = d.split('-');
-  return `${m}/${day}/${y}`;
-}
-
-function daysUntil(dateStr) {
-  if (!dateStr) return null;
-  const diff = new Date(dateStr) - new Date(today());
-  return Math.ceil(diff / 86400000);
-}
-
-function statusColor(status) {
-  const colors = {
-    pending: 'var(--orange)',
-    submitted: 'var(--blue)',
-    received: 'var(--green)',
-    denied: 'var(--red)',
-    appealing: 'var(--purple)',
-    delayed: 'var(--accent)',
-    closed: 'var(--muted)',
-  };
-  return colors[status] || 'var(--muted)';
+// Overall case status = worst/most-active status across its requests
+function caseStatus(c) {
+  const reqs = c.requests || [];
+  if (!reqs.length) return 'pending';
+  const priority = ['denied','appealing','delayed','submitted','pending','received','closed'];
+  for (const p of priority) { if (reqs.some(r => r.status === p)) return p; }
+  return reqs[0].status;
 }
 
 function toast(msg) {
@@ -868,7 +382,7 @@ function toast(msg) {
   setTimeout(() => el.classList.remove('show'), 2500);
 }
 
-// ── TABS ───────────────────────────────────────────────
+// ── TABS ──
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -879,7 +393,7 @@ document.querySelectorAll('.tab').forEach(tab => {
   });
 });
 
-// ── RENDER ALL ─────────────────────────────────────────
+// ── RENDER ──
 function renderAll() {
   renderHeader();
   renderDashboard();
@@ -888,93 +402,97 @@ function renderAll() {
   populateStateFilter();
 }
 
-function renderHeader() {
-  document.getElementById('hdr-total').textContent = cases.length;
-  document.getElementById('hdr-pending').textContent = cases.filter(c => ['pending','submitted','delayed'].includes(c.status)).length;
-  document.getElementById('hdr-received').textContent = cases.filter(c => c.status === 'received').length;
+function allRequests() {
+  return cases.flatMap(c => (c.requests||[]).map(r => ({ ...r, caseId: c.id, caseName: c.name })));
 }
 
-// ── DASHBOARD ──────────────────────────────────────────
+function renderHeader() {
+  const reqs = allRequests();
+  document.getElementById('hdr-cases').textContent = cases.length;
+  document.getElementById('hdr-reqs').textContent = reqs.length;
+  document.getElementById('hdr-received').textContent = reqs.filter(r => r.status === 'received').length;
+}
+
+// ── DASHBOARD ──
 function renderDashboard() {
+  const reqs = allRequests();
   const total = cases.length;
-  const submitted = cases.filter(c => c.status === 'submitted').length;
-  const received  = cases.filter(c => c.status === 'received').length;
-  const denied    = cases.filter(c => c.status === 'denied').length;
-  const pending   = cases.filter(c => c.status === 'pending').length;
-  const delayed   = cases.filter(c => c.status === 'delayed').length;
-  const overdue   = cases.filter(c => c.dueDate && daysUntil(c.dueDate) < 0 && !['received','closed','denied'].includes(c.status)).length;
+  const totalReqs = reqs.length;
+  const received = reqs.filter(r => r.status === 'received').length;
+  const denied   = reqs.filter(r => r.status === 'denied').length;
+  const pending  = reqs.filter(r => r.status === 'pending').length;
+  const submitted= reqs.filter(r => r.status === 'submitted').length;
+  const delayed  = reqs.filter(r => r.status === 'delayed').length;
+  const overdue  = reqs.filter(r => r.dueDate && daysUntil(r.dueDate) < 0 && !['received','closed','denied'].includes(r.status)).length;
+  const readyEdit= cases.filter(c => c.ready === 'yes').length;
 
-  const kpiEl = document.getElementById('dash-kpis');
-  kpiEl.innerHTML = [
-    { label: 'Total Requests', value: total, color: 'var(--accent)' },
-    { label: 'Pending Send',   value: pending, color: 'var(--orange)' },
-    { label: 'Submitted',      value: submitted, color: 'var(--blue)' },
-    { label: 'Received',       value: received, color: 'var(--green)' },
-    { label: 'Denied',         value: denied, color: 'var(--red)' },
-    { label: 'Delayed',        value: delayed, color: 'var(--purple)' },
-    { label: 'Overdue',        value: overdue, color: overdue > 0 ? 'var(--red)' : 'var(--muted)' },
-    { label: 'Ready to Edit',  value: cases.filter(c => c.ready === 'yes').length, color: 'var(--green)' },
-  ].map(k => `
-    <div class="kpi-card">
-      <div class="kpi-value" style="color:${k.color}">${k.value}</div>
-      <div class="kpi-label">${k.label}</div>
-    </div>
-  `).join('');
+  document.getElementById('dash-kpis').innerHTML = [
+    { label:'Cases',       value: total,     color:'var(--accent)' },
+    { label:'Total Reqs',  value: totalReqs, color:'var(--accent)' },
+    { label:'Pending',     value: pending,   color:'var(--orange)' },
+    { label:'Submitted',   value: submitted, color:'var(--blue)' },
+    { label:'Received',    value: received,  color:'var(--green)' },
+    { label:'Denied',      value: denied,    color:'var(--red)' },
+    { label:'Delayed',     value: delayed,   color:'var(--purple)' },
+    { label:'Overdue',     value: overdue,   color: overdue > 0 ? 'var(--red)' : 'var(--muted)' },
+    { label:'Ready Edit',  value: readyEdit, color:'var(--green)' },
+  ].map(k => `<div class="kpi-card"><div class="kpi-value" style="color:${k.color}">${k.value}</div><div class="kpi-label">${k.label}</div></div>`).join('');
 
-  // Recent
+  // recent cases
   const recentEl = document.getElementById('dash-recent');
   const recent = [...cases].reverse().slice(0, 6);
   if (!recent.length) {
     recentEl.innerHTML = '<div class="empty-state"><div class="empty-icon">📂</div>No cases yet</div>';
   } else {
-    recentEl.innerHTML = recent.map(c => `
-      <div class="recent-item" onclick="openDetail('${c.id}')">
+    recentEl.innerHTML = recent.map(c => {
+      const cs = caseStatus(c);
+      return `<div class="recent-item" onclick="openDetail('${c.id}')">
         <div>
           <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">${c.id}</div>
           <div style="font-size:13px;margin-top:2px">${c.name}</div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">${c.agency} • ${c.state || '—'}</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">${(c.requests||[]).length} request${(c.requests||[]).length!==1?'s':''}</div>
         </div>
-        <span class="tag tag-status-${c.status}">${c.status}</span>
-      </div>
-    `).join('');
+        <span class="tag tag-status-${cs}">${cs}</span>
+      </div>`;
+    }).join('');
   }
 
-  // Deadlines
+  // deadlines
   const ddEl = document.getElementById('dash-deadlines');
-  const upcoming = cases
-    .filter(c => c.dueDate && !['received','closed'].includes(c.status))
-    .map(c => ({ ...c, days: daysUntil(c.dueDate) }))
-    .sort((a, b) => a.days - b.days)
+  const upcoming = allRequests()
+    .filter(r => r.dueDate && !['received','closed'].includes(r.status))
+    .map(r => ({ ...r, days: daysUntil(r.dueDate) }))
+    .sort((a,b) => a.days - b.days)
     .slice(0, 6);
 
   if (!upcoming.length) {
-    ddEl.innerHTML = '<div style="color:var(--muted);font-family:var(--mono);font-size:12px;padding:12px 0">No upcoming deadlines</div>';
+    ddEl.innerHTML = '<div style="color:var(--muted);font-family:var(--mono);font-size:12px;padding:12px 0">No deadlines set</div>';
   } else {
-    ddEl.innerHTML = upcoming.map(c => {
-      const overdue = c.days < 0;
-      const label = overdue ? `${Math.abs(c.days)}d OVERDUE` : c.days === 0 ? 'DUE TODAY' : `${c.days}d left`;
-      return `
-        <div class="deadline-item" onclick="openDetail('${c.id}')">
-          <div>
-            <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">${c.id}</div>
-            <div style="font-size:13px">${c.name}</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-family:var(--mono);font-size:11px;color:${overdue ? 'var(--red)' : c.days <= 3 ? 'var(--orange)' : 'var(--muted)'};font-weight:600">${label}</div>
-            <div style="font-family:var(--mono);font-size:10px;color:var(--muted)">${fmtDate(c.dueDate)}</div>
-          </div>
+    ddEl.innerHTML = upcoming.map(r => {
+      const od = r.days < 0;
+      const label = od ? `${Math.abs(r.days)}d OVERDUE` : r.days === 0 ? 'DUE TODAY' : `${r.days}d left`;
+      const color = od ? 'var(--red)' : r.days <= 3 ? 'var(--orange)' : 'var(--muted)';
+      return `<div class="deadline-item" onclick="openDetail('${r.caseId}')">
+        <div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">${r.caseId} · ${r.rid}</div>
+          <div style="font-size:13px">${r.caseName}</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">${r.agency}${r.state?' · '+r.state:''}</div>
         </div>
-      `;
+        <div style="text-align:right">
+          <div style="font-family:var(--mono);font-size:11px;color:${color};font-weight:700">${label}</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted)">${fmtDate(r.dueDate)}</div>
+        </div>
+      </div>`;
     }).join('');
   }
 }
 
-// ── CASES LIST ─────────────────────────────────────────
+// ── CASES LIST ──
 function populateStateFilter() {
-  const states = [...new Set(cases.map(c => c.state).filter(Boolean))].sort();
+  const states = [...new Set(cases.flatMap(c => (c.requests||[]).map(r => r.state)).filter(Boolean))].sort();
   const sel = document.getElementById('filter-state');
   const cur = sel.value;
-  sel.innerHTML = '<option value="">All States</option>' + states.map(s => `<option value="${s}" ${s===cur?'selected':''}>${s}</option>`).join('');
+  sel.innerHTML = '<option value="">All States</option>' + states.map(s => `<option value="${s}"${s===cur?' selected':''}>${s}</option>`).join('');
 }
 
 function renderCases() {
@@ -983,10 +501,11 @@ function renderCases() {
   const stateF  = document.getElementById('filter-state').value;
 
   let filtered = cases.filter(c => {
-    if (statusF && c.status !== statusF) return false;
-    if (stateF  && c.state  !== stateF)  return false;
+    const reqs = c.requests || [];
+    if (statusF && !reqs.some(r => r.status === statusF)) return false;
+    if (stateF  && !reqs.some(r => r.state === stateF))   return false;
     if (search) {
-      const hay = `${c.name} ${c.agency} ${c.state} ${c.notes} ${c.request} ${c.refnum}`.toLowerCase();
+      const hay = `${c.name} ${c.notes} ${reqs.map(r => `${r.agency} ${r.state} ${r.refnum} ${r.request}`).join(' ')}`.toLowerCase();
       if (!hay.includes(search)) return false;
     }
     return true;
@@ -996,45 +515,54 @@ function renderCases() {
   if (!filtered.length) {
     el.innerHTML = cases.length
       ? '<div class="no-results">No cases match your filters.</div>'
-      : '<div class="empty-state"><div class="empty-icon">🗂️</div>No FOIA requests yet.<br>Hit "+ New Case" to log your first one.</div>';
+      : '<div class="empty-state"><div class="empty-icon">🗂️</div>No cases yet.<br>Hit "+ New Case" to log your first one.</div>';
     return;
   }
 
   el.innerHTML = filtered.map(c => {
-    const days = c.dueDate ? daysUntil(c.dueDate) : null;
-    const overdue = days !== null && days < 0 && !['received','closed','denied'].includes(c.status);
-    let dueLabel = '';
-    if (c.dueDate && !['received','closed'].includes(c.status)) {
-      if (days < 0) dueLabel = `<span class="case-date overdue">⚠ ${Math.abs(days)}d overdue</span>`;
-      else if (days === 0) dueLabel = `<span class="case-date overdue">⚠ Due today</span>`;
-      else if (days <= 5) dueLabel = `<span class="case-date" style="color:var(--orange)">${days}d left</span>`;
-      else dueLabel = `<span class="case-date">Due ${fmtDate(c.dueDate)}</span>`;
-    }
+    const reqs = c.requests || [];
+    const cs = caseStatus(c);
+    const potEmoji = {high:'🔥',medium:'📈',low:'📉'}[c.potential] || '';
 
-    const potentialEmoji = { high: '🔥', medium: '📈', low: '📉' }[c.potential] || '';
+    const reqRows = reqs.map((r, i) => {
+      const days = r.dueDate ? daysUntil(r.dueDate) : null;
+      const od = days !== null && days < 0 && !['received','closed','denied'].includes(r.status);
+      let dueLabel = '';
+      if (r.dueDate && !['received','closed'].includes(r.status)) {
+        if (days < 0) dueLabel = `<span class="req-due overdue">⚠ ${Math.abs(days)}d overdue</span>`;
+        else if (days === 0) dueLabel = `<span class="req-due overdue">⚠ Due today</span>`;
+        else if (days <= 5) dueLabel = `<span class="req-due soon">${days}d left</span>`;
+        else dueLabel = `<span class="req-due">${fmtDate(r.dueDate)}</span>`;
+      }
+      return `<div class="req-row" style="--req-color:${statusColor(r.status)}" onclick="event.stopPropagation();openDetail('${c.id}','${r.rid}')">
+        <div>
+          <div class="req-label">${r.rid}</div>
+          <div class="req-agency">${r.agency}${r.state?' <span style="color:var(--muted);font-size:11px">· '+r.state+'</span>':''}</div>
+          ${r.refnum ? `<div style="font-family:var(--mono);font-size:10px;color:var(--muted)">REF: ${r.refnum}</div>` : ''}
+        </div>
+        <div class="req-right">
+          ${dueLabel}
+          <span class="tag tag-status-${r.status}">${r.status}</span>
+        </div>
+      </div>`;
+    }).join('');
 
-    return `
-      <div class="case-card" style="--status-color:${statusColor(c.status)}" onclick="openDetail('${c.id}')">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
-          <div style="flex:1">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <span class="case-id">${c.id}</span>
-              ${c.refnum ? `<span style="font-family:var(--mono);font-size:10px;color:var(--muted)">REF: ${c.refnum}</span>` : ''}
-            </div>
-            <div class="case-title">${c.name} ${potentialEmoji}</div>
-            <div class="case-sub">${c.agency}${c.state ? ' · ' + c.state : ''}</div>
-            <div class="case-meta">
-              <span class="tag tag-status-${c.status}">${c.status}</span>
-              ${c.state ? `<span class="tag tag-state">${c.state}</span>` : ''}
-              ${c.ready === 'yes' ? `<span class="tag" style="background:rgba(39,174,96,0.15);color:var(--green)">READY</span>` : ''}
-              ${dueLabel}
-              ${c.submittedDate ? `<span class="case-date">Filed ${fmtDate(c.submittedDate)}</span>` : ''}
-            </div>
+    return `<div class="case-card" style="--case-color:${statusColor(cs)}">
+      <div class="case-card-header" onclick="openDetail('${c.id}')">
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="case-id">${c.id}</span>
+            ${c.ready==='yes'?'<span class="tag" style="background:rgba(39,174,96,0.15);color:var(--green)">READY</span>':''}
           </div>
+          <div class="case-title">${c.name} ${potEmoji}</div>
+          <div class="case-sub">${reqs.length} request${reqs.length!==1?'s':''} · ${reqs.filter(r=>r.status==='received').length} received</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
           <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openEdit('${c.id}')">Edit</button>
         </div>
       </div>
-    `;
+      ${reqs.length ? `<div class="requests-strip">${reqRows}</div>` : ''}
+    </div>`;
   }).join('');
 }
 
@@ -1042,58 +570,127 @@ document.getElementById('search-input').addEventListener('input', renderCases);
 document.getElementById('filter-status').addEventListener('change', renderCases);
 document.getElementById('filter-state').addEventListener('change', renderCases);
 
-// ── DEADLINES VIEW ─────────────────────────────────────
+// ── DEADLINES VIEW ──
 function renderDeadlines() {
-  const all = cases
-    .filter(c => c.dueDate)
-    .map(c => ({ ...c, days: daysUntil(c.dueDate) }))
-    .sort((a, b) => a.days - b.days);
+  const all = allRequests()
+    .filter(r => r.dueDate)
+    .map(r => ({ ...r, days: daysUntil(r.dueDate) }))
+    .sort((a,b) => a.days - b.days);
 
   const el = document.getElementById('deadlines-list');
   if (!all.length) {
     el.innerHTML = '<div class="empty-state"><div class="empty-icon">📅</div>No deadlines set yet.</div>';
     return;
   }
-
-  el.innerHTML = all.map(c => {
-    const done = ['received','closed','denied'].includes(c.status);
-    const overdue = !done && c.days < 0;
-    const label = done ? '✓ Done' : overdue ? `${Math.abs(c.days)}d OVERDUE` : c.days === 0 ? 'DUE TODAY' : `${c.days}d remaining`;
-    const color = done ? 'var(--muted)' : overdue ? 'var(--red)' : c.days <= 3 ? 'var(--orange)' : 'var(--green)';
-
-    return `
-      <div class="deadline-item" onclick="openDetail('${c.id}')">
-        <div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">${c.id}</div>
-          <div style="font-size:14px;font-weight:500">${c.name}</div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">${c.agency} · ${c.state || '—'}</div>
-        </div>
-        <div style="text-align:right;flex-shrink:0">
-          <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:${color}">${label}</div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">${fmtDate(c.dueDate)}</div>
-          <span class="tag tag-status-${c.status}" style="margin-top:4px;display:inline-block">${c.status}</span>
-        </div>
+  el.innerHTML = all.map(r => {
+    const done = ['received','closed','denied'].includes(r.status);
+    const od = !done && r.days < 0;
+    const label = done ? '✓ Done' : od ? `${Math.abs(r.days)}d OVERDUE` : r.days===0 ? 'DUE TODAY' : `${r.days}d remaining`;
+    const color = done ? 'var(--muted)' : od ? 'var(--red)' : r.days<=3 ? 'var(--orange)' : 'var(--green)';
+    return `<div class="deadline-item" onclick="openDetail('${r.caseId}','${r.rid}')">
+      <div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">${r.caseId} · ${r.rid}</div>
+        <div style="font-size:14px;font-weight:500">${r.caseName}</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">${r.agency}${r.state?' · '+r.state:''}</div>
       </div>
-    `;
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:${color}">${label}</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">${fmtDate(r.dueDate)}</div>
+        <span class="tag tag-status-${r.status}" style="margin-top:4px;display:inline-block">${r.status}</span>
+      </div>
+    </div>`;
   }).join('');
 }
 
-// ── ADD / EDIT MODAL ───────────────────────────────────
-document.getElementById('add-case-btn').addEventListener('click', () => openAddModal());
+// ── REQUEST EDITOR (inside case modal) ──
+function renderRequestsEditor() {
+  const ed = document.getElementById('requests-editor');
+  if (!draftRequests.length) {
+    draftRequests = [blankRequest('R1')];
+  }
+  ed.innerHTML = draftRequests.map((r, i) => `
+    <div class="req-editor-card" data-idx="${i}">
+      <div class="req-editor-card-header">
+        <span class="req-editor-label">Request ${r.rid}</span>
+        ${draftRequests.length > 1 ? `<button class="btn btn-danger btn-xs" onclick="removeRequest(${i})">Remove</button>` : ''}
+      </div>
+      <div class="req-editor-grid">
+        <div class="form-group">
+          <label>Agency / Department *</label>
+          <input type="text" placeholder="e.g. Bixby Police Dept" value="${esc(r.agency)}" oninput="draftRequests[${i}].agency=this.value" />
+        </div>
+        <div class="form-group">
+          <label>State</label>
+          <input type="text" placeholder="e.g. OK" maxlength="2" style="text-transform:uppercase" value="${esc(r.state)}" oninput="draftRequests[${i}].state=this.value.toUpperCase()" />
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select onchange="draftRequests[${i}].status=this.value">
+            ${['pending','submitted','received','denied','appealing','delayed','closed'].map(s =>
+              `<option value="${s}"${r.status===s?' selected':''}>${s.charAt(0).toUpperCase()+s.slice(1)}</option>`
+            ).join('')}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Reference / Tracking #</label>
+          <input type="text" placeholder="Agency's request ID" value="${esc(r.refnum)}" oninput="draftRequests[${i}].refnum=this.value" />
+        </div>
+        <div class="form-group">
+          <label>Date Submitted</label>
+          <input type="date" value="${r.submittedDate||''}" oninput="draftRequests[${i}].submittedDate=this.value" />
+        </div>
+        <div class="form-group">
+          <label>Response Due Date</label>
+          <input type="date" value="${r.dueDate||''}" oninput="draftRequests[${i}].dueDate=this.value" />
+        </div>
+        <div class="form-group">
+          <label>Portal / Contact URL</label>
+          <input type="url" placeholder="https://..." value="${esc(r.portal)}" oninput="draftRequests[${i}].portal=this.value" />
+        </div>
+        <div class="form-group full">
+          <label>What Was Requested</label>
+          <textarea placeholder="Describe what footage/docs you requested from this agency..." oninput="draftRequests[${i}].request=this.value">${esc(r.request)}</textarea>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function blankRequest(rid) {
+  return { rid, agency:'', state:'', status:'pending', submittedDate: today(), dueDate:'', portal:'', refnum:'', request:'' };
+}
+
+function removeRequest(i) {
+  draftRequests.splice(i, 1);
+  // re-number
+  draftRequests = draftRequests.map((r, idx) => ({ ...r, rid: `R${idx+1}` }));
+  renderRequestsEditor();
+}
+
+document.getElementById('add-req-btn').addEventListener('click', () => {
+  draftRequests.push(blankRequest(`R${draftRequests.length+1}`));
+  renderRequestsEditor();
+});
+
+function esc(s) { return (s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// ── CASE MODAL ──
+document.getElementById('add-case-btn').addEventListener('click', openAddModal);
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal-cancel').addEventListener('click', closeModal);
-document.getElementById('modal-overlay', document.getElementById('case-modal'));
-
-document.getElementById('case-modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('case-modal')) closeModal();
-});
+document.getElementById('case-modal').addEventListener('click', e => { if (e.target.id==='case-modal') closeModal(); });
 
 function openAddModal() {
   editingId = null;
   document.getElementById('modal-mode-label').textContent = 'New Case';
   document.getElementById('delete-case-btn').style.display = 'none';
-  clearForm();
-  document.getElementById('f-submitted').value = today();
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-notes').value = '';
+  document.getElementById('f-potential').value = '';
+  document.getElementById('f-ready').value = 'no';
+  draftRequests = [blankRequest('R1')];
+  draftRequests[0].submittedDate = today();
+  renderRequestsEditor();
   document.getElementById('case-modal').classList.add('open');
 }
 
@@ -1101,73 +698,44 @@ function openEdit(id) {
   const c = cases.find(x => x.id === id);
   if (!c) return;
   editingId = id;
-  document.getElementById('modal-mode-label').textContent = `Edit Case — ${id}`;
+  document.getElementById('modal-mode-label').textContent = `Edit — ${id}`;
   document.getElementById('delete-case-btn').style.display = '';
   document.getElementById('f-name').value = c.name || '';
-  document.getElementById('f-agency').value = c.agency || '';
-  document.getElementById('f-state').value = c.state || '';
-  document.getElementById('f-status').value = c.status || 'pending';
-  document.getElementById('f-submitted').value = c.submittedDate || '';
-  document.getElementById('f-due').value = c.dueDate || '';
-  document.getElementById('f-portal').value = c.portal || '';
-  document.getElementById('f-refnum').value = c.refnum || '';
-  document.getElementById('f-request').value = c.request || '';
   document.getElementById('f-notes').value = c.notes || '';
   document.getElementById('f-potential').value = c.potential || '';
   document.getElementById('f-ready').value = c.ready || 'no';
+  draftRequests = JSON.parse(JSON.stringify(c.requests || [blankRequest('R1')]));
+  renderRequestsEditor();
   document.getElementById('case-modal').classList.add('open');
 }
 
-function closeModal() {
-  document.getElementById('case-modal').classList.remove('open');
-}
-
-function clearForm() {
-  ['f-name','f-agency','f-state','f-submitted','f-due','f-portal','f-refnum','f-request','f-notes'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
-  document.getElementById('f-status').value = 'pending';
-  document.getElementById('f-potential').value = '';
-  document.getElementById('f-ready').value = 'no';
-}
+function closeModal() { document.getElementById('case-modal').classList.remove('open'); }
 
 document.getElementById('modal-save').addEventListener('click', () => {
-  const name   = document.getElementById('f-name').value.trim();
-  const agency = document.getElementById('f-agency').value.trim();
-  if (!name || !agency) { toast('Case name and agency are required.'); return; }
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { toast('Case name is required.'); return; }
+  if (!draftRequests.some(r => r.agency.trim())) { toast('At least one request needs an agency.'); return; }
 
   if (editingId) {
     const idx = cases.findIndex(c => c.id === editingId);
     cases[idx] = {
       ...cases[idx],
-      name, agency,
-      state: document.getElementById('f-state').value.trim().toUpperCase(),
-      status: document.getElementById('f-status').value,
-      submittedDate: document.getElementById('f-submitted').value,
-      dueDate: document.getElementById('f-due').value,
-      portal: document.getElementById('f-portal').value.trim(),
-      refnum: document.getElementById('f-refnum').value.trim(),
-      request: document.getElementById('f-request').value.trim(),
+      name,
       notes: document.getElementById('f-notes').value.trim(),
       potential: document.getElementById('f-potential').value,
       ready: document.getElementById('f-ready').value,
+      requests: draftRequests.map(r => ({ ...r, state: (r.state||'').toUpperCase() })),
       updatedAt: new Date().toISOString(),
     };
     toast('Case updated.');
   } else {
     const c = {
-      id: genId(),
-      name, agency,
-      state: document.getElementById('f-state').value.trim().toUpperCase(),
-      status: document.getElementById('f-status').value,
-      submittedDate: document.getElementById('f-submitted').value,
-      dueDate: document.getElementById('f-due').value,
-      portal: document.getElementById('f-portal').value.trim(),
-      refnum: document.getElementById('f-refnum').value.trim(),
-      request: document.getElementById('f-request').value.trim(),
+      id: genCaseId(),
+      name,
       notes: document.getElementById('f-notes').value.trim(),
       potential: document.getElementById('f-potential').value,
       ready: document.getElementById('f-ready').value,
+      requests: draftRequests.map(r => ({ ...r, state: (r.state||'').toUpperCase() })),
       timeline: [],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
@@ -1181,94 +749,111 @@ document.getElementById('modal-save').addEventListener('click', () => {
 });
 
 document.getElementById('delete-case-btn').addEventListener('click', () => {
-  if (!editingId) return;
-  if (!confirm('Delete this case permanently?')) return;
+  if (!editingId || !confirm('Delete this case and all its requests?')) return;
   cases = cases.filter(c => c.id !== editingId);
-  save();
-  closeModal();
-  renderAll();
-  toast('Case deleted.');
+  save(); closeModal(); renderAll(); toast('Case deleted.');
 });
 
-// ── DETAIL MODAL ───────────────────────────────────────
-function openDetail(id) {
-  const c = cases.find(x => x.id === id);
+// ── DETAIL MODAL ──
+function openDetail(caseId, focusRid) {
+  const c = cases.find(x => x.id === caseId);
   if (!c) return;
+  const reqs = c.requests || [];
 
   document.getElementById('detail-id').textContent = c.id;
   document.getElementById('detail-name').textContent = c.name;
 
-  const days = c.dueDate ? daysUntil(c.dueDate) : null;
-  const dueStr = c.dueDate
-    ? (days < 0 ? `${fmtDate(c.dueDate)} (${Math.abs(days)}d overdue)` : days === 0 ? `${fmtDate(c.dueDate)} (TODAY)` : `${fmtDate(c.dueDate)} (${days}d left)`)
-    : '—';
+  const reqCards = reqs.map(r => {
+    const days = r.dueDate ? daysUntil(r.dueDate) : null;
+    const dueStr = r.dueDate
+      ? (days < 0 ? `${fmtDate(r.dueDate)} (${Math.abs(days)}d overdue)` : days===0 ? `${fmtDate(r.dueDate)} (TODAY)` : `${fmtDate(r.dueDate)} (${days}d left)`)
+      : '—';
+    const highlight = focusRid && r.rid === focusRid ? 'border-color:var(--accent)' : '';
+    return `<div class="req-detail-card" style="--req-color:${statusColor(r.status)};${highlight}" id="req-${r.rid}">
+      <div class="req-detail-header">
+        <div>
+          <div class="req-detail-title">${r.rid} — ${r.agency}${r.state?' · '+r.state:''}</div>
+          ${r.refnum ? `<div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">REF: ${r.refnum}</div>` : ''}
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <span class="tag tag-status-${r.status}">${r.status}</span>
+          <select style="font-family:var(--mono);font-size:11px;padding:4px 8px;background:var(--bg);border:1px solid var(--border2);border-radius:4px;color:var(--text)" onchange="quickReqStatus('${c.id}','${r.rid}',this.value)">
+            <option value="">Change status…</option>
+            ${['pending','submitted','received','denied','appealing','delayed','closed'].map(s => `<option value="${s}">${s}</option>`).join('')}
+          </select>
+        </div>
+      </div>
+      <div class="detail-grid" style="margin-bottom:${r.request?'10px':'0'}">
+        <div class="detail-item"><div class="detail-label">Filed</div><div class="detail-value">${fmtDate(r.submittedDate)}</div></div>
+        <div class="detail-item"><div class="detail-label">Due</div><div class="detail-value ${days!==null&&days<0&&!['received','closed'].includes(r.status)?'overdue':''}">${dueStr}</div></div>
+      </div>
+      ${r.request ? `<div style="font-size:12px;color:var(--muted);line-height:1.5;margin-top:6px">${r.request.replace(/\n/g,'<br>')}</div>` : ''}
+      ${r.portal ? `<div style="margin-top:8px"><a href="${r.portal}" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--blue)">🔗 Open Portal</a></div>` : ''}
+    </div>`;
+  }).join('');
 
   document.getElementById('detail-body').innerHTML = `
     <div class="detail-section">
-      <div class="detail-section-title">Request Info</div>
+      <div class="detail-section-title">Case Overview</div>
       <div class="detail-grid">
-        <div class="detail-item"><div class="detail-label">Agency</div><div class="detail-value">${c.agency}</div></div>
-        <div class="detail-item"><div class="detail-label">State</div><div class="detail-value">${c.state || '—'}</div></div>
-        <div class="detail-item"><div class="detail-label">Status</div><div class="detail-value"><span class="tag tag-status-${c.status}">${c.status}</span></div></div>
-        <div class="detail-item"><div class="detail-label">Reference #</div><div class="detail-value" style="font-family:var(--mono)">${c.refnum || '—'}</div></div>
-        <div class="detail-item"><div class="detail-label">Filed</div><div class="detail-value">${fmtDate(c.submittedDate)}</div></div>
-        <div class="detail-item"><div class="detail-label">Response Due</div><div class="detail-value ${days !== null && days < 0 && !['received','closed'].includes(c.status) ? 'overdue' : ''}">${dueStr}</div></div>
-        <div class="detail-item"><div class="detail-label">Content Potential</div><div class="detail-value">${{high:'🔥 High',medium:'📈 Medium',low:'📉 Low'}[c.potential] || '—'}</div></div>
-        <div class="detail-item"><div class="detail-label">Ready to Edit?</div><div class="detail-value">${{yes:'✅ Yes',no:'❌ No',partial:'⚡ Partial'}[c.ready] || '—'}</div></div>
+        <div class="detail-item"><div class="detail-label">Potential</div><div class="detail-value">${{high:'🔥 High',medium:'📈 Medium',low:'📉 Low'}[c.potential]||'—'}</div></div>
+        <div class="detail-item"><div class="detail-label">Edit Ready?</div><div class="detail-value">${{yes:'✅ Ready',no:'❌ Not yet',partial:'⚡ Partial'}[c.ready]||'—'}</div></div>
       </div>
-      ${c.portal ? `<div style="margin-top:12px"><a href="${c.portal}" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--blue)">🔗 Open Portal / Contact</a></div>` : ''}
+      ${c.notes ? `<div style="font-size:13px;line-height:1.6;color:var(--text);margin-top:12px">${c.notes.replace(/\n/g,'<br>')}</div>` : ''}
     </div>
 
-    ${c.request ? `
     <div class="detail-section">
-      <div class="detail-section-title">What Was Requested</div>
-      <div style="font-size:13px;line-height:1.6;color:var(--text)">${c.request.replace(/\n/g,'<br>')}</div>
-    </div>` : ''}
-
-    ${c.notes ? `
-    <div class="detail-section">
-      <div class="detail-section-title">Case Summary</div>
-      <div style="font-size:13px;line-height:1.6;color:var(--text)">${c.notes.replace(/\n/g,'<br>')}</div>
-    </div>` : ''}
+      <div class="detail-section-title">FOIA Requests (${reqs.length})</div>
+      ${reqCards || '<div style="color:var(--muted);font-size:12px">No requests logged.</div>'}
+    </div>
 
     <div class="detail-section">
       <div class="detail-section-title">Timeline / Updates</div>
       <div class="notes-list" id="timeline-list">
-        ${(c.timeline || []).map(n => `
-          <div class="note-item">
-            <div class="note-ts">${new Date(n.ts).toLocaleString()}</div>
-            <div class="note-text">${n.text}</div>
-          </div>
-        `).join('') || '<div style="color:var(--muted);font-size:12px;font-family:var(--mono)">No updates logged yet.</div>'}
+        ${(c.timeline||[]).map(n => `<div class="note-item"><div class="note-ts">${new Date(n.ts).toLocaleString()}</div><div class="note-text">${n.text}</div></div>`).join('') || '<div style="color:var(--muted);font-size:12px;font-family:var(--mono)">No updates yet.</div>'}
       </div>
       <div class="note-input-row">
-        <input id="note-input" type="text" placeholder="Log an update (e.g. 'Got extension notice', 'Uploaded footage')..." />
+        <input id="note-input" type="text" placeholder="Log an update (e.g. 'Got extension on R2', 'R1 footage received')..." />
         <button class="btn btn-ghost btn-sm" onclick="addNote('${c.id}')">Log</button>
       </div>
     </div>
 
-    <div style="display:flex;gap:10px;margin-top:8px;">
+    <div style="display:flex;gap:10px;margin-top:4px">
       <button class="btn btn-ghost btn-sm" onclick="openEdit('${c.id}');document.getElementById('detail-modal').classList.remove('open')">Edit Case</button>
-      <div style="margin-left:auto;display:flex;gap:10px;align-items:center;">
-        <select style="font-family:var(--mono);font-size:11px;padding:5px 8px;background:var(--bg);border:1px solid var(--border2);border-radius:4px;color:var(--text)" id="quick-status-${c.id}" onchange="quickStatus('${c.id}',this.value)">
-          <option value="">Quick Status Change…</option>
-          <option value="pending">Pending</option>
-          <option value="submitted">Submitted</option>
-          <option value="received">Received</option>
-          <option value="denied">Denied</option>
-          <option value="appealing">Appealing</option>
-          <option value="delayed">Delayed</option>
-          <option value="closed">Closed</option>
-        </select>
-      </div>
     </div>
   `;
 
   document.getElementById('detail-modal').classList.add('open');
 
+  // scroll to focused request
+  if (focusRid) {
+    setTimeout(() => {
+      const el = document.getElementById('req-' + focusRid);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  }
+
   document.getElementById('note-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') addNote(c.id);
   });
+}
+
+function quickReqStatus(caseId, rid, val) {
+  if (!val) return;
+  const c = cases.find(x => x.id === caseId);
+  if (!c) return;
+  const r = (c.requests||[]).find(x => x.rid === rid);
+  if (!r) return;
+  r.status = val;
+  if (!c.timeline) c.timeline = [];
+  c.timeline.push({ ts: new Date().toISOString(), text: `${rid} (${r.agency}) status → ${val}` });
+  c.updatedAt = new Date().toISOString();
+  // update ready flag auto
+  if (val === 'received' && (c.requests||[]).every(x => x.status==='received')) c.ready = 'yes';
+  save();
+  renderAll();
+  toast(`${rid} → ${val}`);
+  openDetail(caseId, rid);
 }
 
 function addNote(id) {
@@ -1282,40 +867,14 @@ function addNote(id) {
   save();
   input.value = '';
   const list = document.getElementById('timeline-list');
-  list.innerHTML = c.timeline.map(n => `
-    <div class="note-item">
-      <div class="note-ts">${new Date(n.ts).toLocaleString()}</div>
-      <div class="note-text">${n.text}</div>
-    </div>
-  `).join('');
+  list.innerHTML = c.timeline.map(n => `<div class="note-item"><div class="note-ts">${new Date(n.ts).toLocaleString()}</div><div class="note-text">${n.text}</div></div>`).join('');
   renderAll();
 }
 
-function quickStatus(id, val) {
-  if (!val) return;
-  const c = cases.find(x => x.id === id);
-  if (!c) return;
-  c.status = val;
-  c.updatedAt = new Date().toISOString();
-  if (!c.timeline) c.timeline = [];
-  c.timeline.push({ ts: new Date().toISOString(), text: `Status changed to: ${val}` });
-  save();
-  renderAll();
-  toast(`Status → ${val}`);
-  document.getElementById(`quick-status-${id}`).value = '';
-}
+document.getElementById('detail-close').addEventListener('click', () => document.getElementById('detail-modal').classList.remove('open'));
+document.getElementById('detail-modal').addEventListener('click', e => { if (e.target.id==='detail-modal') document.getElementById('detail-modal').classList.remove('open'); });
 
-document.getElementById('detail-close').addEventListener('click', () => {
-  document.getElementById('detail-modal').classList.remove('open');
-});
-
-document.getElementById('detail-modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('detail-modal')) {
-    document.getElementById('detail-modal').classList.remove('open');
-  }
-});
-
-// ── INIT ───────────────────────────────────────────────
+// ── INIT ──
 renderAll();
 </script>
 </body>
